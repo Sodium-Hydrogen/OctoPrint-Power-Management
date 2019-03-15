@@ -38,11 +38,17 @@ You will need to modify the `$path` variable to in `power-manager.sh`.
 * Copy the complied file `hub-ctrl` to this directory.
 * From the command line you need to type `$ sudo crontab -e` and add `@reboot /home/pi/OctoPrint-Power-Management/power-manager.sh` to the last line.
 
-#### OctoPrint Interface ####
+#### OctoPrint Interface (Enclosure Plugin)####
 * Install the Octoprint plugin `Enclosure Plugin`.
 * Under that plugin's settings add two new outputs, both should be `Shell Script`.
-* For the power off button in the script section enter `echo 0 > /home/pi/OctoPrint-Power-Management/state.txt`
-* Repeat for the power on button but type `echo 1 > ...` instead.
+* For the power on button in the script section enter `echo 1 > /home/pi/OctoPrint-Power-Management/state.txt`
+* Repeat for the power off button but type `echo 0 > ...` instead.
+
+#### OctoPrint Interface (PSU Control)####
+* Install the Octoprint plugin `PSU Control`.
+* Under that plugin's settings select system command for switching method.
+* For the power on section enter `echo 1 > /home/pi/OctoPrint-Power-Management/state.txt`
+* Repeat for the power off section but type `echo 0 > ...` instead.
 
 <br>
 Finally reboot your OctoPrint server for the changes to take effect.
