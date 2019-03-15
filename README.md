@@ -5,8 +5,7 @@ on the Raspberry Pi to prevent the pi from powering the 3D printer.
 <br>
 I used [this relay].
 <br>
-Cut the white wire in your power cord and put one end in the COM port and the other
-in the NO port. Leave the black and green wire uncut.
+Cut the live wire from the power cable and connect it to COM and NO. Leave the others untouched.
 <br>
 Connect the VCC to one of the RPi's 3.3v pins and GND to the RPi's ground pin.
 <br>
