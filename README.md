@@ -5,7 +5,7 @@ on the Raspberry Pi to prevent the pi from powering the 3D printer.
 <br>
 I used [this relay].
 <br>
-Cut the live wire from the power cable and connect it to COM and NO. Leave the others untouched.
+Cut the live wire (black) from the power cable and connect it to COM and NO. Leave the others untouched (white and green).
 <br>
 Connect the VCC to one of the RPi's 3.3v pins and GND to the RPi's ground pin.
 <br>
@@ -52,6 +52,12 @@ You will need to modify the `$path` variable to in `power-manager.sh`.
 
 <br>
 Finally reboot your OctoPrint server for the changes to take effect.
+
+# !Warning! #
+You should remove write permissions to `power-manager.sh` and `hub-ctrl`
+```
+$ chmod -w power-manager.sh hub-ctrl
+```
 
 
 [this relay]: https://www.amazon.com/3V-Relay-Module-Optocoupler-Development/dp/B01M0E6SQM/ref=sr_1_3?keywords=3v+relay&qid=1552677200&s=gateway&sr=8-3
