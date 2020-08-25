@@ -2,28 +2,29 @@
 
 This is a script that will control a GPIO pin tied to a relay and disable the USB ports
 on the Raspberry Pi to prevent the pi from powering the 3D printer.
-<br>
-I used [this relay].
-<br>
-Cut the live wire (black) from the power cable and connect it to COM and NO. Leave the others untouched (white and green).
-<br>
-Connect the VCC to one of the RPi's 3.3v pins and GND to the RPi's ground pin.
-<br>
-I connected BCM 2 to the IN port.
-<br>
-An interactive pinout can be found [here](https://pinout.xyz/).
 
 --------------------
 Since it isn't a good idea to give a web interface the ability to run super user commands
 this script runs in the background as root waiting until the state.txt file is updated.
 Once updated this script either will toggle the USB ports and, if enabled, a GPIO pin.
-<br>
+
 By default it is setup to toggle GPIO pin 2. You can change the pin in the power-manager.sh file
 or disable it.
-<br>
+
 To change the pin, set `relay_gpio` to the pin you would like to use.
-<br>
+
 To disable GPIO control set `set_gpio` equal to false.
+
+## Relay Installation ##
+I used [this relay].
+
+Cut the live wire (black) from the power cable and connect it to COM and NO. Leave the others untouched (white and green).
+
+Connect the VCC to one of the RPi's 3.3v pins and GND to the RPi's ground pin.
+
+I connected BCM 2 to the IN port.
+
+An interactive pinout can be found [here](https://pinout.xyz/).
 
 ## Installation ##
 
@@ -42,13 +43,19 @@ You will need to modify the `$path` variable to in `power-manager.sh`.
 * Install the Octoprint plugin `Enclosure Plugin`.
 * Under that plugin's settings add two new outputs, both should be `Shell Script`.
 * For the power on button in the script section enter `echo 1 > /home/pi/OctoPrint-Power-Management/state.txt`
-* Repeat for the power off button but type `echo 0 > ...` instead.
+* Repeat for the power off button but enter a 0 instead of a 1 `echo 0 > ...` instead.
 
 #### OctoPrint Interface (PSU Control) ####
 * Install the Octoprint plugin `PSU Control`.
 * Under that plugin's settings select system command for switching method.
 * For the power on section enter `echo 1 > /home/pi/OctoPrint-Power-Management/state.txt`
-* Repeat for the power off section but type `echo 0 > ...` instead.
+* Repeat for the power off section but enter a 0 instead of a 1 `echo 0 > ...` instead.
+
+#### Other Controls ####
+If you are already using another control for psu control, et control a smart plug, then find the option for executing system commands and change the following:
+
+* For the power on script section enter `echo 1 > /home/pi/OctoPrint-Power-Management/state.txt`
+* Repeat for the power off but enter a 0 instead of a 1 `echo 0 > ...` instead.
 
 <br>
 Finally reboot your OctoPrint server for the changes to take effect.
