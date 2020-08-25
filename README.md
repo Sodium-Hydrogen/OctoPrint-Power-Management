@@ -16,7 +16,7 @@ To change the pin, set `relay_gpio` to the pin you would like to use.
 To disable GPIO control set `set_gpio` equal to false.
 
 ## Relay Installation ##
-I used [this relay].
+I suggest using a 3.3v logic level relay __That Can Handle The Max Amperage Of Your Printer.__ 5v logic level relay may not work with the Pi.
 
 Cut the live wire (black) from the power cable and connect it to COM and NO. Leave the others untouched (white and green).
 
